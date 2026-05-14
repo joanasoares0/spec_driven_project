@@ -1,0 +1,83 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Pokémon TCG 151 — Abre Boosters</title>
+  <link rel="stylesheet" href="/src/styles/main.css" />
+</head>
+<body>
+
+  <!-- Quota warning banner (T025) -->
+  <div id="quota-banner" class="quota-banner hidden">
+    ⚠ Armazenamento cheio — a coleção pode não ser salva completamente.
+  </div>
+
+  <!-- Error overlay (shown when cards.json not found) -->
+  <div id="error-overlay" class="error-overlay hidden">
+    <div class="error-box">
+      <div class="error-icon">⚠</div>
+      <h2>Assets não encontrados</h2>
+      <p>Execute o script de configuração antes de iniciar o jogo:</p>
+      <code>python download_cards.py</code>
+      <p class="error-hint">Depois recarregue esta página.</p>
+    </div>
+  </div>
+
+  <!-- Loading state -->
+  <div id="loading" class="loading">
+    <div class="spinner"></div>
+    <p>Carregando cartas...</p>
+  </div>
+
+  <!-- Main app (hidden until cards loaded) -->
+  <div id="app" class="app hidden">
+
+    <!-- Tab navigation -->
+    <nav class="tab-nav">
+      <button class="tab-btn tab-btn--active" data-view="pack">
+        🃏 Abrir Pacote
+      </button>
+      <button class="tab-btn" data-view="collection">
+        📚 Coleção
+        <span id="collection-counter" class="counter-badge">0</span>
+      </button>
+    </nav>
+
+    <!-- Pack opening view -->
+    <section id="pack-view" class="view view--active">
+      <div class="pack-opening">
+        <div id="card-stage" class="card-stage"></div>
+        <div id="hand-row" class="hand-row"></div>
+        <div id="card-nav" class="card-nav hidden">
+          <button id="prev-btn" class="btn btn--nav" aria-label="Carta anterior">&#8249;</button>
+          <span id="card-counter" class="card-counter">1 / 6</span>
+          <button id="next-btn" class="btn btn--nav" aria-label="Próxima carta">&#8250;</button>
+        </div>
+        <div class="pack-controls">
+          <button id="open-pack-btn" class="btn btn--primary">
+            Abrir Pacote
+          </button>
+        </div>
+      </div>
+    </section>
+
+    <!-- Collection view -->
+    <section id="collection-view" class="view">
+      <div class="collection-header">
+        <h2 class="collection-title">Minha Coleção</h2>
+        <span id="completion-counter" class="completion-counter">0 / 0 cartas</span>
+      </div>
+      <div class="filter-bar" id="filter-bar">
+        <!-- Filter buttons rendered by collectionView.js -->
+      </div>
+      <div class="collection-grid" id="collection-grid">
+        <!-- Card grid rendered by collectionView.js -->
+      </div>
+    </section>
+
+  </div>
+
+  <script type="module" src="/src/main.js"></script>
+</body>
+</html>
