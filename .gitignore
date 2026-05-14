@@ -8,3 +8,25 @@ wheels/
 
 # Virtual environments
 .venv
+
+# Node / Vite
+node_modules/
+dist/
+.vite/
+*.log
+*.local
+.env*
+
+# Card assets (downloaded by download_cards.py — not committed)
+assets/01_comum/*.jpg
+assets/02_incomum/*.jpg
+assets/03_raras/*.jpg
+assets/04_duplo_raras/*.jpg
+assets/05_arte_secreta/*.jpg
+assets/06_duplo_arte_secreta/*.jpg
+assets/07_legendária/*.jpg
+assets/data/cards.json
+
+# OS
+.DS_Store
+Thumbs.db
